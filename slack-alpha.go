@@ -3,11 +3,9 @@ package SlackAlpha
 import (
 	"fmt"
 	"net/http"
-  //"bytes"
-  "io/ioutil"
-  //"strings"
-  "appengine"
-  "appengine/urlfetch"
+ 	"io/ioutil"
+	"appengine"
+ 	"appengine/urlfetch"
 	"net/url"
 )
 
@@ -35,18 +33,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		    }
 
 		    parameters := url.Values{}
-		    parameters.Add("appid", "A72QEU-JR4WL54R8Y")
+		    parameters.Add("appid", "APP-ID-HERE")
 		    parameters.Add("i", query)
 		    Url.RawQuery = parameters.Encode()
-
-/*
-    apiUrl := "http://api.wolframalpha.com/v2/result"
-    var buffer bytes.Buffer
-    buffer.WriteString(apiUrl)
-    buffer.WriteString("?appid=A72QEU-JR4WL54R8Y")
-    buffer.WriteString("&i=")
-    buffer.WriteString(properQuery)
-    getURL := buffer.String() */
 
     ctx := appengine.NewContext(r)
     client := urlfetch.Client(ctx)
